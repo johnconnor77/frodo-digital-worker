@@ -1,5 +1,6 @@
 from libraries.common import log_message, capture_page_screenshot, browser
 from libraries.google.google import Google
+from libraries.itunes.itunes import Itunes
 from config import OUTPUT_FOLDER, tabs_dict
 
 
@@ -24,6 +25,11 @@ class Process:
         tabs_dict["Google"] = len(tabs_dict)
         google.access_google()
         google.search_movie(movie_name="The lord of the Rings: The Return of the King itunes movie us")
+        itunes = Itunes(browser)
+        del tabs_dict["Google"]
+        tabs_dict["itunes"] = len(tabs_dict)
+        itunes.extract_information()
+        itunes.write_data_to_excel()
 
     def finish(self):
         log_message("DW Process Finished")
