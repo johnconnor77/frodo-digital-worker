@@ -17,4 +17,8 @@ class Google:
     def search_movie(self, movie_name: str):
         self.browser.input_text_when_element_is_visible('//input[@title="Search"]', movie_name)
         act_on_element('//div[@class="FPdoLc lJ9FBc"]//input[@value="Google Search"]', "click_element")
-        time.sleep(5)
+        time.sleep(3)
+        act_on_element('//div[@id="rso"]/div[1]//a[contains(@href, "itunes")]', 'click_element')
+        time.sleep(3)
+
+
