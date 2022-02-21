@@ -11,6 +11,9 @@ class Itunes:
         self.data_dict_list = []
 
     def access_itunes(self):
+        """
+        Access iTunes from the browser.
+        """
         self.browser.go_to(self.itunes_url)
 
     def extract_information(self):
@@ -71,7 +74,7 @@ class Itunes:
                 for elem in movies_genres:
                     excel_dict_list.append({"movie_name": elem[0], "movie_genre": elem[1]})
 
-            files.append_rows_to_worksheet(excel_dict_list, name =artist_name, header=False, start=None)
+            files.append_rows_to_worksheet(excel_dict_list, name=artist_name, header=True, start=None)
 
         files.remove_worksheet(name="Sheet")
         files.save_workbook(path=None)
